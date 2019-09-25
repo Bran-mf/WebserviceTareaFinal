@@ -3,28 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/model/ActividadesDto.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/service/ProyectoService.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/model/Proyecto.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/web/WEB-INF/glassfish-resources.xml</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/model/Seguimiento.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/model/SeguimientoDto.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/web/index.html</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/model/AdministradorDto.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/model/ProyectoDto.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/conf/persistence.xml</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/service/SeguimientoService.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/service/AdministradorService.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/model/Actividades.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/util/CodigoRespuesta.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/util/LocalDateAdapter.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/service/ActividadesService.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/model/Administrador.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/webService/Ws.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/util/CampoException.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/util/LocalDateTimeAdapter.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/WebServiceTarea2.1/src/java/WebServiceTarea2/util/Respuesta.java</file>
+            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/WebserviceTareaFinal/WebServiceTarea2.1/src/java/WebServiceTarea2/model/Administrador.java</file>
+            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/WebserviceTareaFinal/WebServiceTarea2.1/src/java/webService/WS.java</file>
+            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/WebserviceTareaFinal/WebServiceTarea2.1/src/java/WebServiceTarea2/model/AdministradorDto.java</file>
+            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/WebserviceTareaFinal/WebServiceTarea2.1/src/java/WebServiceTarea2/service/AdministradorService.java</file>
         </group>
     </open-files>
 </project-private>

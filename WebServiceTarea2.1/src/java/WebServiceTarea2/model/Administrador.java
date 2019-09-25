@@ -55,8 +55,8 @@ public class Administrador implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @SequenceGenerator(name = "ADM_ID_GENERATOR", sequenceName = "SEQ_ADMINISTRADOR", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ADM_ID_GENERATOR")
+    @SequenceGenerator(name = "ADM_ID_SEQ", sequenceName = "SEQ_ADMINISTRADOR", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ADM_ID_SEQ")
     @Basic(optional = false)
     @Column(name = "ADN_ID")
     private Long adnId;

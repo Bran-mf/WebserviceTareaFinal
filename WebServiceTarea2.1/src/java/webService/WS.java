@@ -190,6 +190,8 @@ public class WS {
 
     /**
      * Web service operation
+     * @param Administrador
+     * @return 
      */
     @WebMethod(operationName = "guardarAdministrador")
     public Respuesta guardarAdministrador(@WebParam(name = "Administrador") AdministradorDto Administrador) {
