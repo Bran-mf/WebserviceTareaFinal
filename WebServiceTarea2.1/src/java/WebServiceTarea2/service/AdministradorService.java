@@ -65,19 +65,19 @@ public class AdministradorService {
     public Respuesta validarAdministrador(String usuario, String contrasena) { 
         try {
             Query qryActividad = em.createNamedQuery("Administrador.findByUsuClave", Administrador.class);
-            qryActividad.setParameter("adnUsuario", usuario);
             qryActividad.setParameter("adnContrasena", contrasena);
-
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Administrador", new AdministradorDto((Administrador) qryActividad.getSingleResult()));
-
+            qryActividad.setParameter("adnUsuario", usuario);
+            Administrador administrador = (Administrador) qryActividad.getSingleResult();
+            AdministradorDto administradorDto = new AdministradorDto(administrador);
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "AdministradorDto", (AdministradorDto) administradorDto);
         } catch (NoResultException ex) {
-            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un usuario con las credenciales ingresadas.", "validarUsuario NoResultException");
+            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un Administrador con las credenciales ingresadas.", "validarAdministrador NoResultException");
         } catch (NonUniqueResultException ex) {
-            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el usuario.", ex);
-            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el usuario.", "validarUsuario NonUniqueResultException");
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el Administrador.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el Administrador.", "validarAdministrador NonUniqueResultException");
         } catch (Exception ex) {
-            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el usuario.", ex);
-            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el usuario.", "validarUsuario " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el Administrador.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el Administrador.", "validarAdministrador " + ex.getMessage());
         }
     }
     
@@ -119,18 +119,16 @@ public class AdministradorService {
             if (AdministradorDto.getAdnId()!= null && AdministradorDto.getAdnId() > 0) {
                 Administrador = em.find(Administrador.class, AdministradorDto.getAdnId());
                 if (Administrador == null) {
-                    return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró el Administrador a modificar", "guardarAdministrador NoResultException");
+                    return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encontró el Administrador a modificar.", "guardarAdministrador NoResultException");
                 }
                 Administrador.actualizarAdministrador(AdministradorDto);
                 Administrador = em.merge(Administrador);
             } else {
                 Administrador = new Administrador(AdministradorDto);
-                Administrador.setAdnEstado("A");
-                Administrador.setAdnVersion(new Long(1));
                 em.persist(Administrador);
             }
             em.flush();
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "Administrador guardado exitosamente", "", "Administrador", new AdministradorDto(Administrador));
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Administrador", new AdministradorDto(Administrador));
         } catch (Exception ex) {
             LOG.log(Level.SEVERE, "Ocurrio un error al guardar el Administrador.", ex);
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al guardar el Administrador.", "guardarAdministrador " + ex.getMessage());

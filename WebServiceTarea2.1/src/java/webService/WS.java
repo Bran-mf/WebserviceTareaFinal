@@ -52,17 +52,7 @@ public class WS {
         }
     }
 
-    @WebMethod(operationName = "guardarAdministrador")
-    public Respuesta guardarAdministrador(@WebParam(name = "Administrador") AdministradorDto Administrador) {
-        try {
-            Respuesta respuesta = administradorService.guardarAdministrador(Administrador);
-            return respuesta;
-        } catch (Exception ex) {
-            Logger.getLogger(WS.class.getName()).log(Level.SEVERE, null, ex);
-            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Error guardando usuario", ex.getMessage());
-        }
-    }
-
+    
     @WebMethod(operationName = "eliminarAdministrador")
     public Respuesta EliminarAdministrador(@WebParam(name = "ID") Long ID) {
         try {
@@ -195,6 +185,20 @@ public class WS {
         } catch (Exception ex) {
             Logger.getLogger(WS.class.getName()).log(Level.SEVERE, null, ex);
             return new Respuesta(false,CodigoRespuesta.ERROR_CLIENTE, "Error al eliminar la Actividad", ex.getMessage());
+        }
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "guardarAdministrador")
+    public Respuesta guardarAdministrador(@WebParam(name = "Administrador") AdministradorDto Administrador) {
+         try {
+            Respuesta respuesta = administradorService.guardarAdministrador(Administrador);
+            return respuesta;
+        } catch (Exception ex) {
+            Logger.getLogger(WS.class.getName()).log(Level.SEVERE, null, ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Error guardando usuario", ex.getMessage());
         }
     }
     

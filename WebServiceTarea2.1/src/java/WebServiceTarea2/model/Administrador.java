@@ -120,7 +120,6 @@ public class Administrador implements Serializable {
         this.adnContrasena = adm.getAdnContrasena();
         this.adnEstado = adm.getAdnEstado();
         this.adnVersion = adm.getAdnVersion();
-        
     }
 
     public Long getAdnId() {
