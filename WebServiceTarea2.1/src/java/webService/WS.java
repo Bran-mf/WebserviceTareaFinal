@@ -143,7 +143,7 @@ public class WS {
             Respuesta respuesta = actividadService.eliminarActividad(ID);
             return respuesta;
         } catch (Exception ex) {
-            Logger.getLogger(ws.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(wS.class.getName()).log(Level.SEVERE, null, ex);
             return new Respuesta(false,CodigoRespuesta.ERROR_CLIENTE, "Error al eliminar la Actividad", ex.getMessage());
         }
     }*/
