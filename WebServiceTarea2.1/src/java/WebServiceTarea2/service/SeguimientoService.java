@@ -55,8 +55,8 @@ public class SeguimientoService {
     public Respuesta guardarSeguimiento(SeguimientoDto SeguimientoDto) {
         try {
             Seguimiento Seguimiento;
-            if (SeguimientoDto.getSegId()!= null && SeguimientoDto.getSegId()> 0) {
-                Seguimiento = em.find(Seguimiento.class, SeguimientoDto.getSegId());
+            if (SeguimientoDto.getId()!= null && SeguimientoDto.getId() > 0) {
+                Seguimiento = em.find(Seguimiento.class, SeguimientoDto.getId());
 
                 if (Seguimiento == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró el Seguimiento a modificar.", "guardarSeguimiento NoResultException");

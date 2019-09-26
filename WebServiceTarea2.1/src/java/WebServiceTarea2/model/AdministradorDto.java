@@ -5,8 +5,6 @@
  */
 package WebServiceTarea2.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -29,10 +27,8 @@ public class AdministradorDto {
     private String adnContrasena;
     private String adnEstado;
     private Long adnVersion;
-    private List <ProyectoDto> proyectos;
-    
+
     public AdministradorDto() {
-        proyectos = new ArrayList<>();
     }
     
     public AdministradorDto(Long adnId, String adnNombre, String adnPapellido, String adnSapellido, String adnCedula, String adnCorreo, String adnUsuario, String adnContrasena, String adnEstado, Long adnVersion) {
@@ -59,15 +55,6 @@ public class AdministradorDto {
         this.adnSapellido = admin.getAdnSapellido();
         this.adnUsuario = admin.getAdnUsuario();
         this.adnVersion = admin.getAdnVersion();
-        /*if(admin.getProyectoList() != null){
-            for (Proyecto p : admin.getProyectoList()){
-                ProyectoDto proy = new ProyectoDto(p);
-                //proy.setProAdmin(this);
-                this.proyectos.add(proy);
-            }
-        }else{
-            this.proyectos =  new ArrayList();
-        }*/
     }
 
     public Long getAdnId() {
@@ -148,24 +135,5 @@ public class AdministradorDto {
 
     public void setAdnVersion(Long adnVersion) {
         this.adnVersion = adnVersion;
-    }
-    public void addProyecto(ProyectoDto p){
-        this.proyectos.add(p);
-    }
-
-    public List<ProyectoDto> getProyectos() {
-        return proyectos;
-    }
-    
-    public List<Proyecto> getProyectosToDB(){
-        List<Proyecto> prs = new ArrayList<>();
-        for (ProyectoDto p : proyectos){
-            prs.add(new Proyecto(p));
-        }
-        return prs;
-    }
-
-    public void setProyectos(List<ProyectoDto> proyectos) {
-        this.proyectos = proyectos;
     }
 }

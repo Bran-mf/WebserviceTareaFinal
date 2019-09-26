@@ -49,7 +49,7 @@ public class Administrador implements Serializable {
     @Basic(optional = false)
     @Column(name = "ADN_VERSION")
     private Long adnVersion;
-    @OneToMany(mappedBy = "adnId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "adnId", fetch = FetchType.LAZY)
     private List<Proyecto> proyectoList;
 
     private static final long serialVersionUID = 1L;
@@ -120,7 +120,6 @@ public class Administrador implements Serializable {
         this.adnContrasena = adm.getAdnContrasena();
         this.adnEstado = adm.getAdnEstado();
         this.adnVersion = adm.getAdnVersion();
-        //for (Proyecto p : this.proyectoList){ p.setProAdministrador(this); }
     }
 
     public Long getAdnId() {
@@ -135,14 +134,6 @@ public class Administrador implements Serializable {
         return adnNombre;
     }
 
-    public List<Proyecto> getProyectoList() {
-        return proyectoList;
-    }
-
-    public void setProyectoList(List<Proyecto> proyectoList) {
-        this.proyectoList = proyectoList;
-    }
-    
     public String getAdnCedula() {
         return adnCedula;
     }
@@ -235,4 +226,14 @@ public class Administrador implements Serializable {
     public String toString() {
         return "WebServiceTarea2.model.Administrador[ admId=" + adnId + " ]";
     }
+
+    @XmlTransient
+    public List<Proyecto> getProyectoList() {
+        return proyectoList;
+    }
+
+    public void setProyectoList(List<Proyecto> proyectoList) {
+        this.proyectoList = proyectoList;
+    }
+
 }
