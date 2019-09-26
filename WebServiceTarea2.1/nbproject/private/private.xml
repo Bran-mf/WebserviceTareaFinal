@@ -4,9 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/WebserviceTareaFinal/WebServiceTarea2.1/src/java/WebServiceTarea2/model/Administrador.java</file>
+            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/WebserviceTareaFinal/WebServiceTarea2.1/src/java/WebServiceTarea2/model/Proyecto.java</file>
+            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/WebserviceTareaFinal/WebServiceTarea2.1/src/java/WebServiceTarea2/model/ProyectoDto.java</file>
             <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/WebserviceTareaFinal/WebServiceTarea2.1/src/java/webService/WS.java</file>
+            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/WebserviceTareaFinal/WebServiceTarea2.1/src/java/WebServiceTarea2/util/Respuesta.java</file>
             <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/WebserviceTareaFinal/WebServiceTarea2.1/src/java/WebServiceTarea2/model/AdministradorDto.java</file>
+            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/WebserviceTareaFinal/WebServiceTarea2.1/src/conf/persistence.xml</file>
             <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/WebserviceTareaFinal/WebServiceTarea2.1/src/java/WebServiceTarea2/service/AdministradorService.java</file>
+            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/WebserviceTareaFinal/WebServiceTarea2.1/src/java/WebServiceTarea2/service/ProyectoService.java</file>
         </group>
     </open-files>
 </project-private>
