@@ -158,16 +158,22 @@ public class AdministradorService {
         }
     }
     
-    public Administrador getAdmin(Long adminId){
-        Administrador admin;
-        Query qry = em.createNamedQuery("Administrador.findByAdmId", Administrador.class);
-        qry.setParameter("admId", adminId);
-        try{
-            admin = (Administrador) qry.getSingleResult();
-        } catch(NoResultException ex){
-            admin = null;
+    public Respuesta getAdministrador(Long id) {
+        try {
+            Query qryAdmin = em.createNamedQuery("Administrador.findByAdnId", Administrador.class);
+            qryAdmin.setParameter("adnId", id);
+
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Administrador", new AdministradorDto((Administrador) qryAdmin.getSingleResult()));
+
+        } catch (NoResultException ex) {
+            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un administrador con el código ingresado.", "getAdministrador NoResultException");
+        } catch (NonUniqueResultException ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el Administrador.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el administrador.", "getAdministrador NonUniqueResultException");
+        } catch (Exception ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el empleado.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el empleado.", "getEmpleado " + ex.getMessage());
         }
-        return admin;
     }
     
     /**

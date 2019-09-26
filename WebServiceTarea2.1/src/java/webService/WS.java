@@ -63,7 +63,33 @@ public class WS {
             return new Respuesta(false,CodigoRespuesta.ERROR_CLIENTE, "Error al eliminar el Administrador", ex.getMessage());
         }
     }
+    @WebMethod(operationName = "getAdministrador")
+    public Respuesta getAdministrador(@WebParam(name = "ID") Long ID) {
+        try {
+            Respuesta respuesta = administradorService.getAdministrador(ID);
+            return respuesta;
+        } catch (Exception ex) {
+            Logger.getLogger(WS.class.getName()).log(Level.SEVERE, null, ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Error guardando usuario", ex.getMessage());
+        }
+    }
 
+    /**
+     * Web service operation
+     * @param ID
+     * @return 
+     */
+    @WebMethod(operationName = "getProyecto")
+    public Respuesta getProyecto(@WebParam(name = "ID") Long ID) {
+        try {
+            Respuesta respuesta = proyectoService.getAdministrador(ID);
+            return respuesta;
+        } catch (Exception ex) {
+            Logger.getLogger(WS.class.getName()).log(Level.SEVERE, null, ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Error guardando usuario", ex.getMessage());
+        }
+    }
+    
     /**
      * Web service operation
      * @param proyecto
@@ -71,7 +97,6 @@ public class WS {
      */
     @WebMethod(operationName = "guardarProyecto")
     public Respuesta guardarProyecto(@WebParam(name = "proyecto") ProyectoDto proyecto) {
-        //TODO write your implementation code here:
         try {
             Respuesta respuesta = proyectoService.guardarProyecto(proyecto);
             return respuesta;

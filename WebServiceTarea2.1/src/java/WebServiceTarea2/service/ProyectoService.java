@@ -22,6 +22,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -101,6 +102,23 @@ public class ProyectoService {
             }
             Logger.getLogger(ProyectoService.class.getName()).log(Level.SEVERE, "Ocurrio un error al guardar el Proyecto.", ex);
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al eliminar el Proyecto.", "EliminarProyecto " + ex.getMessage());
+        }
+    }
+    public Respuesta getAdministrador(Long id) {
+        try {
+            Query qryproyecto = em.createNamedQuery("Proyecto.findByProId", Proyecto.class);
+            qryproyecto.setParameter("proId", id);
+
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Proyecto", new ProyectoDto((Proyecto) qryproyecto.getSingleResult()));
+
+        } catch (NoResultException ex) {
+            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un Proyecto con el código ingresado.", "getProyecto NoResultException");
+        } catch (NonUniqueResultException ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el Administrador.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el administrador.", "getAdministrador NonUniqueResultException");
+        } catch (Exception ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el empleado.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el empleado.", "getEmpleado " + ex.getMessage());
         }
     }
 }

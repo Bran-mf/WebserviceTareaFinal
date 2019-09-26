@@ -17,12 +17,15 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -57,6 +60,8 @@ public class Proyecto implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
+    @SequenceGenerator(name = "PRO_ID_SEQ", sequenceName = "SEQ_PROYECTO", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRO_ID_SEQ")
     @Basic(optional = false)
     @Column(name = "PRO_ID")
     private Long proId;
@@ -131,8 +136,6 @@ public class Proyecto implements Serializable {
         this.proCorreotenico = proCorreotenico;
         this.proCorreopatrocinador = proCorreopatrocinador;
         this.proVersion = proVersion;
-        /*this.actividadesList = actividadesList;
-        this.seguimientoList = seguimientoList;*/
     }
 
     
@@ -152,7 +155,7 @@ public class Proyecto implements Serializable {
         this.proFinalreal = Date.from(fechFinalReal.atStartOfDay(ZoneId.systemDefault()).toInstant());
         this.proInicioreal =  Date.from(fechIniReal.atStartOfDay(ZoneId.systemDefault()).toInstant());
         this.proInicioesperado = Date.from(fechFinal.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        this.proInicioesperado = Date.from(fechIni.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        this.proFinalesperado = Date.from(fechIni.atStartOfDay(ZoneId.systemDefault()).toInstant());
         
         this.proId = proyectoDto.getProId();
         this.proLiderusuario = proyectoDto.getProLiderusuario();
@@ -160,7 +163,7 @@ public class Proyecto implements Serializable {
         this.proPatrocinador = proyectoDto.getProPatrocinador();
         this.proVersion = proyectoDto.getProVersion();
         this.proLidertecnico = proyectoDto.getProLidertecnico();
-        //this.adnId = new Administrador(proyectoDto.getProAdmin());
+        this.adnId=new Administrador(proyectoDto.getProAdmin());
     }
     public Proyecto( ProyectoDto proyectoDto ){
     
@@ -347,15 +350,6 @@ public class Proyecto implements Serializable {
     @Override
     public String toString() {
         return "WebServiceTarea2.model.Proyecto[ proId=" + proId + " ]";
-    }
-
-
-    public Administrador getAdnId() {
-        return adnId;
-    }
-
-    public void setAdnId(Administrador adnId) {
-        this.adnId = adnId;
     }
 
     /*@XmlTransient
