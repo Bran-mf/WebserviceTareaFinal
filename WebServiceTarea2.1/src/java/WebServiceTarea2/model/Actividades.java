@@ -103,7 +103,7 @@ public class Actividades implements Serializable {
         this.actInicioesperado = actInicioesperado;
         this.actFinalesperado = actFinalesperado;
         this.actOrden = actOrden;
-        this.actVersion = actVersion;
+        this.actVersion = actVersion;//
     }
 
     public Actividades(ActividadesDto act){
