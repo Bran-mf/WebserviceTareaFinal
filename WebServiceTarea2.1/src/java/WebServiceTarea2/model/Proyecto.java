@@ -14,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -109,12 +110,12 @@ public class Proyecto implements Serializable {
     @JoinColumn(name = "ADN_ID", referencedColumnName = "ADN_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Administrador adnId;
-    @OneToMany(mappedBy = "segPro", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "segPro", fetch = FetchType.LAZY)
     private List<Actividades> actividadesList;
-    @OneToMany(mappedBy = "actPro", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "actPro", fetch = FetchType.LAZY)
     private List<Seguimiento> seguimientoList;
 
-        public Proyecto() {
+    public Proyecto() {
     }
 
     public Proyecto(Long proId) {
@@ -154,8 +155,8 @@ public class Proyecto implements Serializable {
         
         this.proFinalreal = Date.from(fechFinalReal.atStartOfDay(ZoneId.systemDefault()).toInstant());
         this.proInicioreal =  Date.from(fechIniReal.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        this.proInicioesperado = Date.from(fechFinal.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        this.proFinalesperado = Date.from(fechIni.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        this.proInicioesperado = Date.from(fechIni.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        this.proFinalesperado = Date.from(fechFinal.atStartOfDay(ZoneId.systemDefault()).toInstant());
         
         this.proId = proyectoDto.getProId();
         this.proLiderusuario = proyectoDto.getProLiderusuario();
@@ -164,6 +165,10 @@ public class Proyecto implements Serializable {
         this.proVersion = proyectoDto.getProVersion();
         this.proLidertecnico = proyectoDto.getProLidertecnico();
         this.adnId=new Administrador(proyectoDto.getProAdmin());
+        this.actividadesList = proyectoDto.getActividadesToDB();
+        for(Actividades a:this.actividadesList)a.setSegPro(this);
+        this.seguimientoList = proyectoDto.getSeguimientoToDB();
+        for(Seguimiento s:this.seguimientoList)s.setActPro(this);
     }
     public Proyecto( ProyectoDto proyectoDto ){
     
@@ -172,7 +177,6 @@ public class Proyecto implements Serializable {
         
     }
 
-     @XmlTransient
     public List<Actividades> getActividadesList() {
         return actividadesList;
     }
@@ -180,7 +184,6 @@ public class Proyecto implements Serializable {
     public void setActividadesList(List<Actividades> actividadesList) {
         this.actividadesList = actividadesList;
     }
-    @XmlTransient
     public List<Seguimiento> getSeguimientoList() {
         return seguimientoList;
     }

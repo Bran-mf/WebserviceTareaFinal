@@ -23,12 +23,11 @@ public class Respuesta implements Serializable {
     
     private Boolean estado;
     private CodigoRespuesta codigoRespuesta;   
-    private String mensaje;//    
+    private String mensaje;    
     private String mensajeInterno;
-    private Object resultado; 
+    private Object resultado;
 
     public Respuesta() {
-        this.resultado = new HashMap<>();
     }
 
     public Respuesta(Boolean estado, CodigoRespuesta codigoRespuesta, String mensaje, String mensajeInterno) {
@@ -36,7 +35,6 @@ public class Respuesta implements Serializable {
         this.codigoRespuesta = codigoRespuesta;
         this.mensaje = mensaje;
         this.mensajeInterno = mensajeInterno;
-        this.resultado = new HashMap<>();
     }
     
     public Respuesta(Boolean estado, CodigoRespuesta codigoRespuesta, String mensaje, String mensajeInterno, String nombre, Object resultado) {
@@ -44,7 +42,6 @@ public class Respuesta implements Serializable {
         this.codigoRespuesta = codigoRespuesta;
         this.mensaje = mensaje;
         this.mensajeInterno = mensajeInterno;
-        this.resultado = new HashMap<>();
         this.resultado = resultado;
     }
 
@@ -53,7 +50,6 @@ public class Respuesta implements Serializable {
         this.codigoRespuesta = codigoRespuesta;
         this.mensaje = mensaje;
         this.mensajeInterno = mensajeInterno;
-        this.resultado = new HashMap<>();
         this.resultado = resultado;
     }
     
@@ -89,16 +85,11 @@ public class Respuesta implements Serializable {
         this.mensajeInterno = mensajeInterno;
     }
     
-    public Object getResultado(String nombre) {
+    public Object getResultado() {
         return resultado;
     }
 
     public void setResultado(Object resultado) {
         this.resultado = resultado;
     }
-    
-    public Object getResultado() {
-        return resultado;
-    }
-
 }

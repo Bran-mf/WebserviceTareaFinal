@@ -7,6 +7,7 @@ package WebServiceTarea2.service;
 
 import WebServiceTarea2.model.Actividades;
 import WebServiceTarea2.model.ActividadesDto;
+import WebServiceTarea2.model.Proyecto;
 import WebServiceTarea2.util.CodigoRespuesta;
 import WebServiceTarea2.util.Respuesta;
 import java.sql.SQLIntegrityConstraintViolationException;
@@ -34,7 +35,7 @@ public class ActividadesService {
     private EntityManager em ;
     
     
-   public Respuesta getActividadeses() {
+   public Respuesta getActividades() {
         try {
             Query qryActividades = em.createNamedQuery("Actividad.findAll", Actividades.class);
             List<Actividades> Actividades = qryActividades.getResultList();
@@ -55,28 +56,36 @@ public class ActividadesService {
 
     public Respuesta guardarActividades(ActividadesDto ActividadesDto) {
         try {
-            Actividades Actividades;
-            if (ActividadesDto.getId()!= null && ActividadesDto.getId() > 0) {
-                Actividades = em.find(Actividades.class, ActividadesDto.getId());
+            Actividades Actividad;
+            Proyecto proyecto = em.find(Proyecto.class, ActividadesDto.getProyecto().getProId());
+            if (proyecto != null) {
+                if (ActividadesDto.getId()!= null && ActividadesDto.getId() > 0) {
+                    Actividad = em.find(Actividades.class, ActividadesDto.getId());
 
-                if (Actividades == null) {
-                    return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró el Actividades a modificar.", "guardarActividades NoResultException");
+                    if (Actividad == null) {
+                        return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la Actividad a modificar.", "guardarActividad NoResultException");
+                    }
+
+                    Actividad.actualizarActividades(ActividadesDto);
+                    Actividad.setSegPro(proyecto);
+                    Actividad = em.merge(Actividad);
+
+                } else {
+                    Actividad = new Actividades(ActividadesDto);
+                    Actividad.setSegPro(proyecto);
+                    em.persist(Actividad);
                 }
 
-                Actividades.actualizarActividades(ActividadesDto);
-                Actividades = em.merge(Actividades);
-                
+                em.flush();
+
+                return new Respuesta(true, CodigoRespuesta.CORRECTO, "Actividad guardado exitosamente", "", "Actividad", new ActividadesDto(Actividad));
             } else {
-                Actividades = new Actividades(ActividadesDto);
-                em.persist(Actividades);
+                return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró el Proyecto a modificar.", "guardarActividad NoResultException");
             }
 
-            em.flush();
-
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "Actividades guardado exitosamente", "", "Actividades", new ActividadesDto(Actividades));
         } catch (Exception ex) {
-            LOG.log(Level.SEVERE, "Ocurrio un error al guardar el Actividades.", ex);
-            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al guardar el Actividades.", "guardarActividades " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Ocurrio un error al guardar el Actividad.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al guardar el Actividad.", "guardarActividad " + ex.getMessage());
         }
     }
 

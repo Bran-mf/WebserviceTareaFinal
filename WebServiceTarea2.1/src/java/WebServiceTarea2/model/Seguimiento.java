@@ -7,6 +7,9 @@ package WebServiceTarea2.model;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -42,7 +45,7 @@ public class Seguimiento implements Serializable {
 
     @Basic(optional = false)
     @Column(name = "SEG_AVANCE")
-    private Integer segAvance;
+    private Double segAvance;
     @Basic(optional = false)
     @Column(name = "SEG_VERSION")
     private Long segVersion;
@@ -70,7 +73,7 @@ public class Seguimiento implements Serializable {
         this.segId = segId;
     }
 
-    public Seguimiento(Long segId, Date segFecha, Integer segAvance, Long segVersion) {
+    public Seguimiento(Long segId, Date segFecha, Double segAvance, Long segVersion) {
         this.segId = segId;
         this.segFecha = segFecha;
         this.segAvance = segAvance;
@@ -78,15 +81,16 @@ public class Seguimiento implements Serializable {
     }
 
     public void actualizarSeguimiento(SeguimientoDto seg){
-        this.segAvance = seg.getAvance();
-        this.segFecha = seg.getFecha();
-        this.segId  = seg.getId();
-        this.segVersion = seg.getVersion();
+        this.segAvance = seg.getSegAvance();
+        LocalDate fecha = LocalDate.parse(seg.getSegFecha(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        this.segFecha = Date.from(fecha.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        this.segId  = seg.getSegId();
+        this.segVersion = seg.getSegVersion();
         //this.actPro = new Proyecto(seg.getProyecto());
         
     }
     public Seguimiento(SeguimientoDto seg){
-        this.segId = seg.getId();
+        this.segId = seg.getSegId();
         actualizarSeguimiento(seg);
     }
     public Long getSegId() {
@@ -105,11 +109,11 @@ public class Seguimiento implements Serializable {
         this.segFecha = segFecha;
     }
 
-    public Integer getSegAvance() {
+    public Double getSegAvance() {
         return segAvance;
     }
 
-    public void setSegAvance(Integer segAvance) {
+    public void setSegAvance(Double segAvance) {
         this.segAvance = segAvance;
     }
 

@@ -124,13 +124,6 @@ public class WS {
 
     /**
      * Web service operation
-     * @param adminPorPro
-     * @return 
-     */
-  
-
-    /**
-     * Web service operation
      * @param actividad
      * @return 
      */
@@ -147,21 +140,7 @@ public class WS {
         }
     }
 
-    /**
-     * Web service operation
-     * @param ID
-     * @return 
-     */
-   /* @WebMethod(operationName = "elminarActividad")
-    public Respuesta elminarActividad(@WebParam(name = "ID") Long ID) {
-        try {
-            Respuesta respuesta = actividadService.eliminarActividad(ID);
-            return respuesta;
-        } catch (Exception ex) {
-            Logger.getLogger(wS.class.getName()).log(Level.SEVERE, null, ex);
-            return new Respuesta(false,CodigoRespuesta.ERROR_CLIENTE, "Error al eliminar la Actividad", ex.getMessage());
-        }
-    }*/
+
 
     /**
      * Web service operation
@@ -196,6 +175,8 @@ public class WS {
         }
     }
 
+    
+    
     /**
      * Web service operation
      * @param ID
