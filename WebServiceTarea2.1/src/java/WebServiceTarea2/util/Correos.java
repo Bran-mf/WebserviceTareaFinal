@@ -209,8 +209,8 @@ public class Correos {
                 + "Fecha de finalizacion planeada: " + proyectodto.getProFechafinal() + "<b/>"
                 + "Fecha de finalizacion efectiva: " + proyectodto.getProFechafinreal() + "<b/>"
                 + "Cantidad de seguimientos totales: " + cantSeguimientos + "<b/>"
-                + "Fecha del ultimo seguimiento: " + seguimientoDto.getSegFecha()+ "<b/>"
-                + "Porcentage del avanse: " + seguimientoDto.getSegAvance()+ "%" + "<b/>"
+                + "Fecha del ultimo seguimiento: " + seguimientoDto.getFecha() + "<b/>"
+                + "Porcentage del avanse: " + seguimientoDto.getAvance() + "%" + "<b/>"
                 + "Actividades" + "<b/>"
                 + "VarActividades"
         );
