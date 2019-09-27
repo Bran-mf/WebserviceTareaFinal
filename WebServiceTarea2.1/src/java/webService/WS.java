@@ -228,5 +228,23 @@ public class WS {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Error guardando usuario", ex.getMessage());
         }
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getProyectosporFiltro")
+    public Respuesta getProyectosporFiltro(@WebParam(name = "nombre") String nombre, @WebParam(name = "patrocinador") String patrocinador, @WebParam(name = "estado") String estado, @WebParam(name = "id") long id) {
+         try{
+            Respuesta res = proyectoService.buscarProPorFiltro(nombre, patrocinador, estado,id);
+            return res;
+        }catch(Exception ex){
+            return new Respuesta(false,CodigoRespuesta.ERROR_INTERNO,"Ocurrio un error","Exception Operacion servidor");
+        }
+    }
+
+    /**
+     * Web service operation
+     */
+    
     
 }

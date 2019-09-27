@@ -51,39 +51,39 @@ public class SeguimientoDto {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setSegId(Long id) {
         this.id = id;
     }
 
-    public Date getFecha() {
+    public Date getSegFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setSegFecha(Date fecha) {
         this.fecha = fecha;
     }
 
-    public Integer getAvance() {
+    public Integer getSegAvance() {
         return avance;
     }
 
-    public void setAvance(Integer avance) {
+    public void setSegAvance(Integer avance) {
         this.avance = avance;
     }
 
-    public Long getVersion() {
+    public Long getSegVersion() {
         return version;
     }
 
-    public void setVersion(Long version) {
+    public void setsegVersion(Long version) {
         this.version = version;
     }
 
-    public ProyectoDto getProyecto() {
+    public ProyectoDto getSegProyecto() {
         return proyecto;
     }
 
-    public void setProyecto(ProyectoDto proyecto) {
+    public void setSegProyecto(ProyectoDto proyecto) {
         this.proyecto = proyecto;
     }
     

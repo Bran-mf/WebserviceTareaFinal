@@ -78,10 +78,10 @@ public class Seguimiento implements Serializable {
     }
 
     public void actualizarSeguimiento(SeguimientoDto seg){
-        this.segAvance = seg.getAvance();
-        this.segFecha = seg.getFecha();
+        this.segAvance = seg.getSegAvance();
+        this.segFecha = seg.getSegFecha();
         this.segId  = seg.getId();
-        this.segVersion = seg.getVersion();
+        this.segVersion = seg.getSegVersion();
         //this.actPro = new Proyecto(seg.getProyecto());
         
     }
